@@ -1,0 +1,61 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  /* background-image: linear-gradient(to right, white, green); */
+  background-color: rgb(135, 73, 73);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+.calendar-wrapper{
+  border: 2px solid black;
+  width: 850px;
+  height: 650px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img{
+  border: 2px solid blue;
+  width: 40%;
+}
+
+.calendar{
+  border: 2px solid green;
+  width: 60%;
+}
+
+.monthName{
+  font-size: 30px;
+  padding: 70px 30px 30px 20px;
+}
+
+.weekDays{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0px 20px 0px;
+}
+
+.table{
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 20px; */
+}
+
+.block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 68px;
+  width: 68px;
+  border: 2px solid black;
+}
+
+
