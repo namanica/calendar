@@ -4,7 +4,6 @@
 }
 
 body {
-  /* background-image: linear-gradient(to right, white, green); */
   background-color: rgb(135, 73, 73);
   display: flex;
   align-items: center;
@@ -32,21 +31,22 @@ body {
 }
 
 .monthName{
+  text-align: center;
   font-size: 30px;
-  padding: 70px 30px 30px 20px;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
 .weekDays{
   display: flex;
   justify-content: space-around;
-  margin: 20px 0px 20px 0px;
+  margin: 20px 0 20px 0;
 }
 
 .table{
   margin-top: 60px;
   display: flex;
   flex-wrap: wrap;
-  /* margin: 20px; */
 }
 
 .block{
@@ -58,4 +58,18 @@ body {
   border: 2px solid black;
 }
 
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 5px;
+}
 
+.right-arrow {
+  transform: rotate(-45deg);
+}
+
+.left-arrow {
+  transform: rotate(135deg);
+}
