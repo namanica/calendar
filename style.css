@@ -28,6 +28,7 @@ body {
 .calendar{
   border: 2px solid green;
   width: 60%;
+  background-color: rgb(246, 234, 219);
 }
 
 .monthName{
@@ -56,6 +57,8 @@ body {
   height: 68px;
   width: 68px;
   border: 2px solid black;
+  border-radius: 50%;
+  margin: 4px;
 }
 
 i {
