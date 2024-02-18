@@ -11,7 +11,6 @@ body {
   height: 100vh;
 }
 
-
 .calendar-wrapper{
   border: 2px solid black;
   width: 850px;
@@ -75,4 +74,12 @@ i {
 
 .left-arrow {
   transform: rotate(135deg);
+}
+
+.right-arrow:hover {
+  cursor: pointer;
+}
+
+.left-arrow:hover {
+  cursor: pointer;
 }
