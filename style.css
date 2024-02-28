@@ -4,7 +4,9 @@
 }
 
 body {
-  background-color: rgb(135, 73, 73);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +14,6 @@ body {
 }
 
 .calendar-wrapper{
-  border: 2px solid black;
   width: 850px;
   height: 650px;
   display: flex;
@@ -24,7 +25,6 @@ body {
 }
 
 .calendar{
-  border: 2px solid black;
   width: 60%;
   background-color: rgb(246, 234, 219);
 }
@@ -36,24 +36,41 @@ body {
   padding-bottom: 30px;
 }
 
-.weekDays{
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0 20px 0;
-}
-
 .table{
-  margin-top: 60px;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  margin-left: 20px;
+}
+
+.weekDays{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.dayNumbers{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.weekDay-block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  width: 55px;
+  border: 2px solid black;
+  margin: 4px 4px 50px 4px;
 }
 
 .block{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 68px;
-  width: 68px;
+  height: 55px;
+  width: 55px;
   border: 2px solid black;
   margin: 4px;
 }
