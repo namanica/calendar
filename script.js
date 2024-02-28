@@ -37,9 +37,9 @@ function initCalendar(){
   const lastDayDate = lastDay.getDate();
 
 
-  monthName.innerHTML = monthArr[month] + " " + year;
+  monthName.innerHTML = monthArr[month].toUpperCase() + " " + year;
 
-  
+
 }
 
 initCalendar();
