@@ -18,6 +18,8 @@ let month = today.getMonth();
 let year = today.getFullYear();
 let activeDay;
 
+let eventsArr = [];
+
 const monthArr = [
   {
     name: "January",
@@ -29,20 +31,57 @@ const monthArr = [
     image: "january.png",
     background: "beige.jpg",
   },
-
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  {
+    name: "March",
+    image: "march.png",
+    background: "pink.jpg",
+  },
+  {
+    name:  "April",
+    image: "april.png",
+    background: "pinknwhite.jpg",
+  },
+  {
+    name:  "May",
+    image: "may.png",
+    background: "pinknblue.jpg",
+  },
+  {
+    name:  "June",
+    image: "june.png",
+    background: "rainbow.jpg",
+  },
+  {
+    name:  "July",
+    image: "july.png",
+    background: "greennblue.jpg",
+  },
+  {
+    name:  "August",
+    image: "august.png",
+    background: "yellownpurple.jpg",
+  },
+  {
+    name:  "September",
+    image: "september.png",
+    background: "orangenblue.jpg",
+  },
+  {
+    name:  "October",
+    image: "october.png",
+    background: "orangenyellow.jpg",
+  },
+  {
+    name:  "November",
+    image: "november.png",
+    background: "burgundy.jpg",
+  },
+  {
+    name:  "December",
+    image: "december.png",
+    background: "whitenblue.jpg",
+  },
 ];
-
-let eventsArr = [];
 
 function initCalendar(){
   const firstDay = new Date(year,month,1);
