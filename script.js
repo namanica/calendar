@@ -28,7 +28,7 @@ const monthArr = [
   },
   {
     name: "February",
-    image: "january.png",
+    image: "february.png",
     background: "beige.jpg",
   },
   {
