@@ -26,67 +26,77 @@ const monthArr = [
     name: "January",
     image: "january.png",
     background: "grey.jpg",
-    color:"#76ada2"
+    color:"#76ADA2",
   },
   {
     name: "February",
     image: "february.png",
     background: "beige.jpg",
+    color: "#A1895D",
   },
   {
     name: "March",
     image: "march.png",
     background: "pink.jpg",
-    color: "#d66dbf"
+    color: "#D66DBF",
   },
   {
     name:  "April",
     image: "april.png",
     background: "pinknwhite.jpg",
+    color: "#C69238",
   },
   {
     name:  "May",
     image: "may.png",
     background: "pinknblue.jpg",
+    color: "#33B9CB",
   },
   {
     name:  "June",
     image: "june.png",
     background: "rainbow.jpg",
+    color: "#4AC638",
   },
   {
     name:  "July",
     image: "july.png",
     background: "greennblue.jpg",
+    color: "#45B96C",
   },
   {
     name:  "August",
     image: "august.png",
     background: "yellownpurple.jpg",
+    color: "#7C5BA3",
   },
   {
     name:  "September",
     image: "september.png",
     background: "orangenblue.jpg",
+    color: "#DB2A23",
   },
   {
     name:  "October",
     image: "october.png",
     background: "orangenyellow.jpg",
+    color: "#F0890E",
   },
   {
     name:  "November",
     image: "november.png",
     background: "burgundy.jpg",
+    color: "#AC5B52",
   },
   {
     name:  "December",
     image: "december.png",
     background: "whitenblue.jpg",
+    color: "#2B49D3",
   },
 ];
 
-function initCalendar(){
+function initCalendar() {
   const firstDay = new Date(year,month,1);
   const firstDayNumber = firstDay.getDay();
 
@@ -100,13 +110,15 @@ function initCalendar(){
 
   const day = firstDay.getDay();
 
-  monthName.innerHTML = monthArr[month].name.toUpperCase() + " " + year; //header with month and year
+  //header with month and year
+  monthName.innerHTML = monthArr[month].name.toUpperCase() + " " + year;
   monthImage.setAttribute('src', `images/monthCats/${monthArr[month].image}`);
   body.style.backgroundImage = `url(images/backgrounds/${monthArr[month].background})`;
   let days = '';
 
+  //blocks with dates of previous month
   for (let x = day; x > 0; x --) {
-    days += `<div class="block"><div class="dayNumber">${prevDays - x + 1}</div></div>`; //blocks with dates of previous month
+    days += `<div class="block"><div class="dayNumber">${prevDays - x + 1}</div></div>`;
   }
 
   for (let i = 1; i <= lastDayDate; i ++) {
@@ -134,49 +146,45 @@ function initCalendar(){
     }
   }
 
+  //blocks with dates of the next month
   for ( let i = 1; i <= nextDays; i++) {
-    days += `<div class="block"><div class="dayNumber">${i}</div></div>`; //blocks with dates of the next month
+    days += `<div class="block"><div class="dayNumber">${i}</div></div>`;
   }
   dayNumbers.innerHTML = days;
+
+  //function for highlighting weekends
+  const dayNumbersArr = document.querySelectorAll(".dayNumber");
+  function paintWeekends() {
+    dayNumbersArr.forEach((elem,index) =>{
+      if ((index + 1) % 7 === 0 || (index + 1) % 7 === 1 ) {
+        elem.style.backgroundColor = monthArr[month].color;
+      }
+    });
+  }
+
+  paintWeekends();
 }
 
 initCalendar();
 
-function prevMonth(){
+function prevMonth() {
   month--;
   if (month < 0){
     month = 11;
     year--;
   }
-  paintWeekends();
   initCalendar();
 }
 
-function nextMonth(){
+function nextMonth() {
   month++;
-  if(month > 11){
+  if (month > 11) {
     month = 0;
     year++;
   }
-  paintWeekends();
   initCalendar();
 }
 
 
-leftArrow.addEventListener("click",prevMonth);
-rightArrow.addEventListener("click",nextMonth);
-
-
-const dayNumbersArr = document.querySelectorAll(".dayNumber");
-console.log(dayNumbersArr);
-
-function paintWeekends(){
-  dayNumbersArr.forEach((elem,index) =>{
-    if((index + 1) % 7 === 0 || (index + 1) % 7 === 1 ){
-      elem.style.backgroundColor = monthArr[month].color;
-
-    }
-  })
-}
-
-paintWeekends();
+leftArrow.addEventListener("click", prevMonth);
+rightArrow.addEventListener("click", nextMonth);

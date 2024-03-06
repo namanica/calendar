@@ -32,9 +32,8 @@ body {
 .monthName-wrapper{
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-top: 70px;
-  padding-bottom: 30px;
+  justify-content: space-between;
+  padding: 70px 70px 20px 70px;
 }
 
 .monthName{
