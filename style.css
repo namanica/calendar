@@ -29,11 +29,25 @@ body {
   background-color: rgb(246, 234, 219);
 }
 
+.monthName-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
 .monthName{
   text-align: center;
   font-size: 30px;
-  padding-top: 70px;
-  padding-bottom: 30px;
+}
+
+.right-arrow:hover {
+  cursor: pointer;
+}
+
+.left-arrow:hover {
+  cursor: pointer;
 }
 
 .table{
@@ -55,46 +69,31 @@ body {
   width: 100%;
 }
 
+.dayNumber{
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
 .weekDay-block{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 55px;
-  width: 55px;
-  border: 2px solid black;
-  margin: 4px 4px 50px 4px;
+  height: 57px;
+  width: 57px;
+  margin: 4px 4px 30px 4px;
 }
 
 .block{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 55px;
-  width: 55px;
-  border: 2px solid black;
+  height: 57px;
+  width: 57px;
   margin: 4px;
 }
 
-i {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  margin: 5px;
-}
 
-.right-arrow {
-  transform: rotate(-45deg);
-}
-
-.left-arrow {
-  transform: rotate(135deg);
-}
-
-.right-arrow:hover {
-  cursor: pointer;
-}
-
-.left-arrow:hover {
-  cursor: pointer;
-}

@@ -13,6 +13,7 @@ const tableBlock = document.querySelector(".block");
 const dayNumber = document.querySelector(".dayNumber");
 const dayNumbers = document.querySelector(".dayNumbers");
 
+
 let today = new Date();
 let month = today.getMonth();
 let year = today.getFullYear();
@@ -25,6 +26,7 @@ const monthArr = [
     name: "January",
     image: "january.png",
     background: "grey.jpg",
+    color:"#76ada2"
   },
   {
     name: "February",
@@ -35,6 +37,7 @@ const monthArr = [
     name: "March",
     image: "march.png",
     background: "pink.jpg",
+    color: "#d66dbf"
   },
   {
     name:  "April",
@@ -138,3 +141,42 @@ function initCalendar(){
 }
 
 initCalendar();
+
+function prevMonth(){
+  month--;
+  if (month < 0){
+    month = 11;
+    year--;
+  }
+  paintWeekends();
+  initCalendar();
+}
+
+function nextMonth(){
+  month++;
+  if(month > 11){
+    month = 0;
+    year++;
+  }
+  paintWeekends();
+  initCalendar();
+}
+
+
+leftArrow.addEventListener("click",prevMonth);
+rightArrow.addEventListener("click",nextMonth);
+
+
+const dayNumbersArr = document.querySelectorAll(".dayNumber");
+console.log(dayNumbersArr);
+
+function paintWeekends(){
+  dayNumbersArr.forEach((elem,index) =>{
+    if((index + 1) % 7 === 0 || (index + 1) % 7 === 1 ){
+      elem.style.backgroundColor = monthArr[month].color;
+
+    }
+  })
+}
+
+paintWeekends();
