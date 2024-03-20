@@ -1,0 +1,232 @@
+@media(max-width:1200px){
+    .calendar-wrapper{
+        width: 800px;
+        height: 600px;
+    }
+    .monthName-wrapper{
+        padding: 65px 65px 18px 65px;
+    }  
+
+    .block{
+        height: 55px;
+        width: 55px;
+    } 
+
+    .weekDay-block{
+        align-items: center;
+        height: 55px;
+        width: 55px;
+        margin: 4px 4px 15px 4px;
+    }
+    
+}
+
+@media(max-width:1000px){
+    .calendar-wrapper{
+        width: 750px;
+        height: 550px;
+    }
+
+    .monthName-wrapper{
+        padding: 55px 55px 15px 55px;    
+    }
+
+    .monthName{
+        font-size: 28px;
+    }
+
+    .weekDay-block{
+        height: 40px;
+        width: 50px;
+        margin: 4px 4px 15px 4px;
+    }
+
+    .block{
+        height: 50px;
+        width: 50px;
+    }    
+}
+
+@media(max-width:768px){
+    .calendar-wrapper{
+        width: 700px;
+        height: 500px;
+    }
+
+    .monthName-wrapper{
+        padding: 45px 45px 10px 45px;
+    }
+
+    .monthName{
+        font-size: 25px;
+    }
+
+    .right-arrow{
+        width: 20px;
+        height: 15px;
+    }
+
+    .left-arrow{
+        width: 20px;
+        height: 15px;
+    }
+
+    .weekDay-block{
+        height: 40px;
+        width: 45px;
+        margin: 4px 4px 10px 4px;
+    } 
+
+    .block{
+        height: 45px;
+        width: 45px;
+    }  
+}
+
+@media(max-width:688px) {
+    .calendar-wrapper{
+        width: 675px;
+        height: 575px;
+    }
+
+    .monthName-wrapper{
+        padding: 45px 45px 10px 45px;
+    }
+
+    .weekDay-block{
+        height: 40px;
+        width: 45px;
+        margin: 4px 4px 10px 4px;
+        font-size: 13px;
+    } 
+
+    .block{
+        height: 55px;
+        width: 45px;
+    }
+}
+
+@media(max-width:660px) {
+    .calendar-wrapper{
+        width: 650px;
+        height: 550px;
+    }
+
+    .weekDay-block{
+        height: 40px;
+        width: 42px;
+        margin: 4px 4px 10px 4px;
+        font-size: 13px;
+    } 
+
+    .block{
+        height: 55px;
+        width: 42px;
+    }
+}
+
+@media(max-width:600px){
+    .calendar-wrapper{
+        width: 625px;
+        height: 425px;
+    }
+
+    .monthName{
+        font-size: 18px;
+    }
+
+    .monthName-wrapper{
+        padding: 35px 35px 5px 35px;
+    }  
+
+    .right-arrow{
+        width: 15px;
+        height: 15px;
+    }
+
+    .left-arrow{
+        width: 15px;
+        height: 15px;
+    }
+
+    .weekDay-block{
+        height: 35px;
+        width: 38px;
+        margin: 4px 4px 5px 4px;
+        font-size: 12px;
+    } 
+
+    .block{
+        height: 40px;
+        width: 38px;
+    }
+
+    .dayNumber{
+      font-size: 13px;
+    }
+}
+
+@media(max-width:570px){
+    .calendar-wrapper{
+        width: 550px;
+        height: 400px;
+    }
+
+    .weekDay-block{
+        height: 35px;
+        width: 34px;
+        margin: 4px 4px 5px 4px;
+        font-size: 12px;
+    } 
+
+    .block{
+        height: 36px;
+        width: 34px;
+    }
+
+    .dayNumber{
+      font-size: 13px;
+    }
+}
+
+@media(max-width:530px){
+    .calendar-wrapper{
+      width: 520px;
+      height: 400px;
+    }
+
+    .weekDay-block{
+      height: 35px;
+      width: 32px;
+      margin: 4px 4px 5px 4px;
+      font-size: 12px;
+    } 
+
+    .block{
+      height: 34px;
+      width: 32px;
+    }
+
+    .dayNumber{
+      font-size: 13px;
+    }
+}
+
+@media(max-width:480px){
+    .calendar-wrapper{
+      width: 450px;
+      height: 400px;
+    }
+ 
+    .weekDay-block{
+      height: 35px;
+      width: 26px;
+      margin: 4px 4px 5px 4px;
+      font-size: 12px;
+    } 
+
+    .block{
+      height: 34px;
+      width: 26px;
+    }
+}

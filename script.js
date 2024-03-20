@@ -188,3 +188,5 @@ function nextMonth() {
 
 leftArrow.addEventListener("click", prevMonth);
 rightArrow.addEventListener("click", nextMonth);
+
+

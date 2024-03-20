@@ -18,14 +18,21 @@ body {
   height: 650px;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
+
+
 
 .img{
   width: 40%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar{
-  width: 60%;
+  width: 60%; /* 510px */
   background-color: rgb(246, 234, 219);
 }
 
@@ -39,6 +46,16 @@ body {
 .monthName{
   text-align: center;
   font-size: 30px;
+}
+
+.right-arrow{
+  width: 24px;
+  height: 20px;
+}
+
+.left-arrow{
+  width: 24px;
+  height: 20px;
 }
 
 .right-arrow:hover {
@@ -59,7 +76,7 @@ body {
 .weekDays{
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 100%; /*510x*/
 }
 
 .dayNumbers{
