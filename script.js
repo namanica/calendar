@@ -9,7 +9,7 @@ const leftArrow = document.querySelector(".left-arrow");
 const rightArrow = document.querySelector(".right-arrow");
 const weekDays = document.querySelector(".weekDays");
 const calendarTable = document.querySelector(".table");
-const tableBlock = document.querySelector(".block");
+// const tableBlock = document.querySelector(".block");
 const dayNumber = document.querySelector(".dayNumber");
 const dayNumbers = document.querySelector(".dayNumbers");
 
@@ -167,6 +167,7 @@ function initCalendar() {
 
 initCalendar();
 
+//functions for month forwarding
 function prevMonth() {
   month--;
   if (month < 0){
@@ -189,4 +190,25 @@ function nextMonth() {
 leftArrow.addEventListener("click", prevMonth);
 rightArrow.addEventListener("click", nextMonth);
 
-
+const tableBlock = document.querySelector(".block");
+tableBlock.addEventListener("click", () => {
+  const popup = document.createElement('div');
+  popup.classList.add('pop-up');
+  // popup.classList.add('pop-up.open');
+  popup.innerHTML = `<div class="inner-pop-up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sequi sapiente ut quos corrupti voluptates amet necessitatibus dolores, eaque provident?</div>`;
+  document.body.appendChild(popup);
+  console.log('clicked');
+});
+// document.addEventListener("DOMContentLoaded", function() {
+//   const tableBlock = document.getElementsByClassName(".block");
+//   if (tableBlock) {
+//       tableBlock.addEventListener("click", function() {
+//           const popup = document.createElement('div');
+//           popup.classList.add('pop-up');
+//           popup.innerHTML = `<div class="inner-pop-up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sequi sapiente ut quos corrupti voluptates amet necessitatibus dolores, eaque provident?</div>`;
+//           document.body.appendChild(popup);
+//       });
+//   } else {
+//       console.error("Element with id 'tableBlock' not found");
+//   }
+// });
