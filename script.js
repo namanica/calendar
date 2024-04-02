@@ -175,6 +175,7 @@ function prevMonth() {
     year--;
   }
   initCalendar();
+  setPopUpOpen();
 }
 
 function nextMonth() {
@@ -184,31 +185,39 @@ function nextMonth() {
     year++;
   }
   initCalendar();
+  setPopUpOpen();
 }
 
 
 leftArrow.addEventListener("click", prevMonth);
 rightArrow.addEventListener("click", nextMonth);
 
-const tableBlock = document.querySelector(".block");
-tableBlock.addEventListener("click", () => {
-  const popup = document.createElement('div');
-  popup.classList.add('pop-up');
-  // popup.classList.add('pop-up.open');
-  popup.innerHTML = `<div class="inner-pop-up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sequi sapiente ut quos corrupti voluptates amet necessitatibus dolores, eaque provident?</div>`;
-  document.body.appendChild(popup);
-  console.log('clicked');
-});
-// document.addEventListener("DOMContentLoaded", function() {
-//   const tableBlock = document.getElementsByClassName(".block");
-//   if (tableBlock) {
-//       tableBlock.addEventListener("click", function() {
-//           const popup = document.createElement('div');
-//           popup.classList.add('pop-up');
-//           popup.innerHTML = `<div class="inner-pop-up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sequi sapiente ut quos corrupti voluptates amet necessitatibus dolores, eaque provident?</div>`;
-//           document.body.appendChild(popup);
-//       });
-//   } else {
-//       console.error("Element with id 'tableBlock' not found");
-//   }
-// });
+//functions for creating and shutting event pop-up
+function setPopUpOpen() {
+  const tableBlocks = document.querySelectorAll(".block");
+
+  tableBlocks.forEach(block => {
+    block.addEventListener("click", () => {
+      const popup = document.createElement('div');
+      popup.classList.add('pop-up');
+      popup.innerHTML = `<div class="inner-pop-up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sequi sapiente ut quos corrupti voluptates amet necessitatibus dolores, eaque provident?</div>`;
+      document.body.appendChild(popup);
+      setPopUpClosed();
+    })
+  });
+}
+
+function setPopUpClosed() {
+  const popUp = document.querySelector(".pop-up");
+  if (popUp) {
+    popUp.addEventListener("click", (event) => {
+      const innerPopUp = document.querySelector('.inner-pop-up');
+      if (event.target !== innerPopUp && !innerPopUp.contains(event.target)) {
+        popUp.remove();
+      }
+    });
+  }
+}
+
+setPopUpOpen();
+
