@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .pop-up {
   position: fixed;
   left: 0;
@@ -22,6 +26,11 @@
   background-color: rgb(246, 234, 219);
   box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.8);
   transition: transform 0.8s;
+  display: flex;
+  flex-direction: column;
+  width: 70vh;
+  height: 40vh;
+  border-radius: 20px;
 }
 
 .pop-up.open {
@@ -31,4 +40,42 @@
 
 .pop-up.open .inner-pop-up {
   transform: scale(1);
+}
+
+.pop-up-day{
+  padding-top: 2vh;
+  font-size: 35px;
+}
+
+.pop-up-day-submit-wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5vh;
+}
+
+.pop-up-submit{
+  width: 15vh;
+  height: 5vh;
+  border-radius: 15px;
+  border-color: transparent;
+  background-color: chartreuse;
+  margin-top: 2vh;
+}
+
+.pop-up-time{
+  padding: 4px;
+  width: 30vh;
+  height: 3vh;
+  border-radius: 15px;
+  border-color: transparent;
+}
+
+
+.pop-up-comment{
+  padding: 4px;
+  margin-top: 5vh;
+  height: 25vh;
+  resize: none;
+  border-radius: 15px;
+  border-color: transparent;
 }

@@ -200,7 +200,14 @@ function setPopUpOpen() {
     block.addEventListener("click", () => {
       const popup = document.createElement('div');
       popup.classList.add('pop-up');
-      popup.innerHTML = `<div class="inner-pop-up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sequi sapiente ut quos corrupti voluptates amet necessitatibus dolores, eaque provident?</div>`;
+      popup.innerHTML = `<div class="inner-pop-up">
+      <div class="pop-up-day-submit-wrapper">
+      <div class="pop-up-day">Date</div>
+      <input type="submit" value="Add event..." class="pop-up-submit">
+    </div>
+      <input type="text" class="pop-up-time" placeholder="add time...">
+      <textarea name="comment" class="pop-up-comment" cols="30" rows="10" placeholder="add comment..." ></textarea>
+    </div>`;
       document.body.appendChild(popup);
       setPopUpClosed();
     })
