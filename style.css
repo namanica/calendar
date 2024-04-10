@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'NotoSans';
+  src: url('/calendar/fonts/static/NotoSans-Regular.ttf') format(truetype);
+}
+
 *{
   padding: 0;
   margin: 0;
+  font-family: 'NotoSans';
 }
 
 body {
@@ -27,6 +33,46 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.day-searcher{
+  position: fixed;
+  top: 83%;
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(242, 193, 141);
+  padding: 6px;
+  border-radius: 15px;
+}
+
+.day-input{
+  padding: 4px;
+  width: 18vh;
+  height: 3vh;
+  border-radius: 15px;
+  border-color: transparent;
+}
+
+.day-search-btn{
+  width: 12vh;
+  height: 4vh;
+  border-radius: 15px;
+  border-color: transparent;
+  background-color: chartreuse;
+  cursor: pointer;
+}
+
+.today-searcher-btn{
+  position: fixed;
+  top: 12%;
+  left: 26%;
+  width: 12vh;
+  height: 4vh;
+  border-radius: 15px;
+  border-color: transparent;
+  background-color: #80ff00;
+  cursor: pointer;
 }
 
 .calendar{
@@ -92,6 +138,16 @@ body {
   border-radius: 50%;
 }
 
+/* .today-dayNumber{
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #80ff00;
+} */
+
 .weekDay-block{
   display: flex;
   justify-content: center;
@@ -108,6 +164,9 @@ body {
   height: 57px;
   width: 57px;
   margin: 4px;
+  cursor: pointer;
 }
+
+
 
 
