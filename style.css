@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'NotoSans';
-  src: url('/calendar/fonts/static/NotoSans-Regular.ttf') format(truetype);
+  src: url('/fonts/static/NotoSans-Regular.ttf');
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
-  font-family: 'NotoSans';
+  font-family: 'NotoSans', generic, Serif, serif;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
   height: 100vh;
 }
 
-.calendar-wrapper{
+.calendar-wrapper {
   width: 850px;
   height: 650px;
   display: flex;
@@ -27,35 +27,35 @@ body {
   overflow: hidden;
 }
 
-.img{
+.img {
   width: 40%;
   height: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.day-searcher{
-  position: fixed;
-  top: 83%;
-  width: 18%;
+.day-searcher {
+  width: auto;
   display: flex;
   justify-content: space-between;
   background-color: rgb(242, 193, 141);
   padding: 6px;
   border-radius: 15px;
+  margin: 5px;
 }
 
-.day-input{
+.day-input {
   padding: 4px;
-  width: 18vh;
+  width: 50%;
   height: 3vh;
   border-radius: 15px;
   border-color: transparent;
 }
 
-.day-search-btn{
-  width: 12vh;
+.day-search-btn {
+  width: 30%;
   height: 4vh;
   border-radius: 15px;
   border-color: transparent;
@@ -63,41 +63,39 @@ body {
   cursor: pointer;
 }
 
-.today-searcher-btn{
-  position: fixed;
-  top: 12%;
-  left: 26%;
+.today-searcher-btn {
   width: 12vh;
   height: 4vh;
   border-radius: 15px;
   border-color: transparent;
   background-color: #80ff00;
   cursor: pointer;
+  margin: 1vh;
 }
 
-.calendar{
-  width: 60%; /* 510px */
+.calendar {
+  width: 60%;
   background-color: rgb(246, 234, 219);
 }
 
-.monthName-wrapper{
+.monthName-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 70px 70px 20px 70px;
 }
 
-.monthName{
+.monthName {
   text-align: center;
   font-size: 30px;
 }
 
-.right-arrow{
+.right-arrow {
   width: 24px;
   height: 20px;
 }
 
-.left-arrow{
+.left-arrow {
   width: 24px;
   height: 20px;
 }
@@ -110,26 +108,26 @@ body {
   cursor: pointer;
 }
 
-.table{
+.table {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin-left: 20px;
 }
 
-.weekDays{
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%; /*510x*/
-}
-
-.dayNumbers{
+.weekDays {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.dayNumber{
+.dayNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.dayNumber {
   width: 40px;
   height: 40px;
   align-items: center;
@@ -138,17 +136,11 @@ body {
   border-radius: 50%;
 }
 
-/* .today-dayNumber{
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  border-radius: 50%;
+.active-day {
   background-color: #80ff00;
-} */
+}
 
-.weekDay-block{
+.weekDay-block {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,7 +149,7 @@ body {
   margin: 4px 4px 30px 4px;
 }
 
-.block{
+.block {
   display: flex;
   justify-content: center;
   align-items: center;
