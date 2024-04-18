@@ -82,7 +82,7 @@
     }
 }
 
-@media(max-width:688px) {
+@media(max-width:688px){
     .calendar-wrapper{
         width: 675px;
         height: 575px;
@@ -105,7 +105,7 @@
     }
 }
 
-@media(max-width:660px) {
+@media(max-width:660px){
     .calendar-wrapper{
         width: 650px;
         height: 550px;

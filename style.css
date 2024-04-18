@@ -1,12 +1,18 @@
+:root {
+  --bg-color:rgb(246, 234, 219);
+  --day-searcher-bg:rgb(242, 193, 141);
+  --btn-color:rgb(127, 255, 0);
+}
+
 @font-face {
   font-family: 'NotoSans';
-  src: url('/fonts/static/NotoSans-Regular.ttf');
+  src: url('/calendar/fonts/static/NotoSans-Regular.ttf') format(truetype);
 }
 
 * {
   padding: 0;
   margin: 0;
-  font-family: 'NotoSans', generic, Serif, serif;
+  font-family: 'NotoSans';
 }
 
 body {
@@ -40,7 +46,7 @@ body {
   width: auto;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(242, 193, 141);
+  background-color: var(--day-searcher-bg);
   padding: 6px;
   border-radius: 15px;
   margin: 5px;
@@ -59,7 +65,7 @@ body {
   height: 4vh;
   border-radius: 15px;
   border-color: transparent;
-  background-color: chartreuse;
+  background-color: var(--btn-color);
   cursor: pointer;
 }
 
@@ -68,14 +74,14 @@ body {
   height: 4vh;
   border-radius: 15px;
   border-color: transparent;
-  background-color: #80ff00;
+  background-color: var(--btn-color);
   cursor: pointer;
   margin: 1vh;
 }
 
 .calendar {
   width: 60%;
-  background-color: rgb(246, 234, 219);
+  background-color: var(--bg-color);
 }
 
 .monthName-wrapper {
@@ -137,7 +143,7 @@ body {
 }
 
 .active-day {
-  background-color: #80ff00;
+  background-color: var(--btn-color);
 }
 
 .weekDay-block {
