@@ -27,82 +27,84 @@ const initCalendar = () => {
   const prevDays = prevLastDay.getDate();
   const nextDays = 6 - lastDay.getDay();
   const day = firstDay.getDay();
+  const todayDay = new Date();
+  const todayExact = todayDay.getDate();
+  const monthExact = todayDay.getMonth();
+  const yearExact = todayDay.getFullYear();
 
   //header with month and year
   monthName.innerHTML = monthArr[month].name.toUpperCase() + " " + year;
+
   //background images setting
   imageBlock.style.backgroundImage = `url(images/monthCats/${monthArr[month].image})`;
   body.style.backgroundImage = `url(images/backgrounds/${monthArr[month].background})`;
 
-  let days = '';
-
   //blocks with dates of previous month
-  for (let x = day; x > 0; x --) {
-    days += `<div class="block"><div class="dayNumber">${prevDays - x + 1}</div></div>`;
+  let days = [];
+  for (let x = day; x > 0; x--) {
+    const dayNumberBlock = `<div class="block"><div class="dayNumber">${prevDays - x + 1}</div></div>`;
+    days.push(dayNumberBlock);
   }
 
   //blocks with dates of exact month
-  for (let i = 1; i <= lastDayDate; i ++) {
-    if (i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
-        days += `<div class="block"><div class="dayNumber active-day">${i}</div></div>`;
+  for (let i = 1; i <= lastDayDate; i++) {
+    if (i === todayExact && year === yearExact && month === monthExact) {
+      const dayNumberActiveBlock = `<div class="block"><div class="dayNumber active-day">${i}</div></div>`;
+      days.push(dayNumberActiveBlock);
     } else {
-      days += `<div class="block"><div class="dayNumber">${i}</div></div>`;
+      const dayNumberIndexBlock = `<div class="block"><div class="dayNumber">${i}</div></div>`;
+      days.push(dayNumberIndexBlock);
     }
   }
 
   //blocks with dates of the next month
   for ( let i = 1; i <= nextDays; i++) {
-    days += `<div class="block"><div class="dayNumber">${i}</div></div>`;
+    const dayNumberIndexBlock = `<div class="block"><div class="dayNumber">${i}</div></div>`;
+    days.push(dayNumberIndexBlock);
   }
-
-  dayNumbers.innerHTML = days;
+  dayNumbers.innerHTML = days.join('');
 
   //function for highlighting weekends
   const dayNumbersArr = document.querySelectorAll(".dayNumber");
   const paintWeekends = () => {
-    dayNumbersArr.forEach((elem,index) => {
-      if ((index + 1) % weekDaysNumber === 0 || (index + 1) % weekDaysNumber === 1) {
-        elem.style.backgroundColor = monthArr[month].color;
+    for (let i = 0; i < dayNumbersArr.length; i++) {
+      if ((i + 1) % weekDaysNumber === 0 || (i + 1) % weekDaysNumber === 1) {
+        dayNumbersArr[i].style.backgroundColor = monthArr[month].color;
       }
-    });
-    const daySearcher = document.querySelector(".day-searcher");
-    daySearcher.style.backgroundColor = monthArr[month].color;
+    }
   }
   paintWeekends();
 }
 
 initCalendar();
 
-//functions for month forwarding
-const prevMonth = () => {
-  month --;
-  if (month < 0){
-    month = 11;
-    year --;
+const monthNumber = 11;
+leftArrow.addEventListener("click", () => {
+  month--;
+  if (month < 0) {
+    month = monthNumber;
+    year--;
   }
   initCalendar();
   setPopUpOpen();
-}
-
-const nextMonth = () => {
-  month ++;
-  if (month > 11) {
+});
+rightArrow.addEventListener("click", () => {
+  month++;
+  if (month > monthNumber) {
     month = 0;
     year ++;
   }
   initCalendar();
   setPopUpOpen();
-}
-
-leftArrow.addEventListener("click", prevMonth);
-rightArrow.addEventListener("click", nextMonth);
+});
 
 setPopUpOpen();
 
 dateInput.addEventListener("input",(event) => {
   dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
+  const monthValueLength = 2;
 
-  if (dateInput.value.length === 2) {
+  if (dateInput.value.length === monthValueLength) {
     dateInput.value += "/";
   }
 
@@ -111,7 +113,7 @@ dateInput.addEventListener("input",(event) => {
   }
 
   if (event.inputType === "deleteContentBackward") {
-    if (dateInput.value.length === 3) {
+    if (dateInput.value.length === monthValueLength + 1) {
       dateInput.value = dateInput.value.slice(0,2);
     }
   }
