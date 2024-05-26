@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: 'NotoSans';
-  src: url('/calendar/fonts/static/NotoSans-Regular.ttf') format(truetype);
+  src: url('/fonts/static/NotoSans-Regular.ttf') format(truetype);
 }
 
 * {
