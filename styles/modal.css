@@ -60,20 +60,25 @@
   background-color: var(--btn-color);
   margin-top: 2vh;
 }
+.author-time-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
 
-.pop-up-time {
+.pop-up-time, .pop-up-author{
   padding: 4px;
   width: 30vh;
   height: 3vh;
   border-radius: 15px;
   border-color: transparent;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
-
 .pop-up-comment {
-  padding: 4px;
-  margin-top: 5vh;
-  height: 25vh;
+  padding: 5px;
+  margin-top: 3vh;
+  height: 30vh;
   resize: none;
   border-radius: 15px;
   border-color: transparent;

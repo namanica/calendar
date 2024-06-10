@@ -13,7 +13,10 @@ const setPopUpOpen = () => {
                  <div class="pop-up-day">${event.target.innerHTML} ${monthYearArr[0].toLowerCase()} ${monthYearArr[1]}</div>
                  <input type="submit" value="Add event..." class="pop-up-submit">
                  </div>
+                 <div class="author-time-wrapper">
                  <input type="text" class="pop-up-time" placeholder="add time...">
+                 <input type="text" class="pop-up-author" placeholder="add author...">
+                 </div>
                  <textarea name="comment" class="pop-up-comment" cols="30" rows="10" placeholder="add comment..." ></textarea>
                  </div>`;
             document.body.appendChild(popup);
