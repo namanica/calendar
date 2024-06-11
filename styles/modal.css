@@ -59,6 +59,7 @@
   border-color: transparent;
   background-color: var(--btn-color);
   margin-top: 2vh;
+  cursor: pointer;
 }
 .author-time-wrapper {
   display: flex;
@@ -78,7 +79,8 @@
 .pop-up-comment {
   padding: 5px;
   margin-top: 3vh;
-  height: 30vh;
+  height: 18vh;
+  width: 70vh;
   resize: none;
   border-radius: 15px;
   border-color: transparent;
