@@ -1,3 +1,25 @@
+let todos = [];
+
+const fetchTodos = async () => {
+    try {
+        const response = await fetch('/todos', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            todos = await response.json();
+            console.log(todos);
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 const setPopUpOpen = () => {
     const tableBlocks = document.querySelectorAll(".block");
     const monthName = document.querySelector(".monthName");
@@ -23,22 +45,25 @@ const setPopUpOpen = () => {
                    <input type="hidden" name="data" value="${data}">
                  </form>
                  </div>`;
+                 
             document.body.appendChild(popup);
 
+            displayTodosForDate(data, popup);
+
             const popUpTime = document.querySelector(".pop-up-time");
-            popUpTime.addEventListener("input",(event) => {
+            popUpTime.addEventListener("input", (event) => {
                 popUpTime.value = popUpTime.value.replace(/[^0-9:]/g, "");
                 const hourValueLength = 2;
-                const timevalueLength = 4;
+                const timevalueLength = 5;
                 if (popUpTime.value.length === hourValueLength) {
                     popUpTime.value += ":";
                 }
-                if (popUpTime.value.length >= timevalueLength) {
-                    popUpTime.value = popUpTime.value.slice(0, 5);
+                if (popUpTime.value.length > timevalueLength) {
+                    popUpTime.value = popUpTime.value.slice(0, timevalueLength);
                 }
                 if (event.inputType === "deleteContentBackward") {
                     if (popUpTime.value.length === hourValueLength + 1) {
-                        popUpTime.value = popUpTime.value.slice(0, 2);
+                        popUpTime.value = popUpTime.value.slice(0, hourValueLength);
                     }
                 }
             });
@@ -61,6 +86,7 @@ const setPopUpOpen = () => {
                         const result = await response.json();
                         console.log('Success:', result);
                         popup.remove();
+                        await fetchTodos(); // Re-fetch todos after adding a new one
                     } else {
                         console.error('Error:', response.statusText);
                     }
@@ -85,5 +111,25 @@ const setPopUpClosed = () => {
         });
     }
 }
+
+const displayTodosForDate = (date, popup) => {
+    const relevantTodos = todos.filter(todo => todo.data === date);
+    if (relevantTodos.length > 0) {
+        const latestTodo = relevantTodos[relevantTodos.length - 1];
+        const popUpTime = popup.querySelector(".pop-up-time");
+        const popUpAuthor = popup.querySelector(".pop-up-author");
+        const popUpComment = popup.querySelector(".pop-up-comment");
+
+        popUpTime.value = latestTodo.time || "";
+        popUpAuthor.value = latestTodo.author || "";
+        popUpComment.value = latestTodo.todo || "";
+    }
+}
+
+// Initial fetch of todos when the page loads
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchTodos();
+    setPopUpOpen();
+});
 
 export { setPopUpOpen };
