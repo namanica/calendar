@@ -21,6 +21,7 @@ const fetchTodos = async () => {
 }
 
 const setPopUpOpen = () => {
+    fetchTodos();
     const tableBlocks = document.querySelectorAll(".block");
     const monthName = document.querySelector(".monthName");
     const monthYearArr = monthName.innerHTML.split(' ');
@@ -45,9 +46,8 @@ const setPopUpOpen = () => {
                    <input type="hidden" name="data" value="${data}">
                  </form>
                  </div>`;
-                 
-            document.body.appendChild(popup);
 
+            document.body.appendChild(popup);
             displayTodosForDate(data, popup);
 
             const popUpTime = document.querySelector(".pop-up-time");
@@ -86,7 +86,7 @@ const setPopUpOpen = () => {
                         const result = await response.json();
                         console.log('Success:', result);
                         popup.remove();
-                        await fetchTodos(); // Re-fetch todos after adding a new one
+                        await fetchTodos();
                     } else {
                         console.error('Error:', response.statusText);
                     }
@@ -125,11 +125,5 @@ const displayTodosForDate = (date, popup) => {
         popUpComment.value = latestTodo.todo || "";
     }
 }
-
-// Initial fetch of todos when the page loads
-document.addEventListener("DOMContentLoaded", async () => {
-    await fetchTodos();
-    setPopUpOpen();
-});
 
 export { setPopUpOpen };

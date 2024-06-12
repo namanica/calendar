@@ -26,7 +26,7 @@ mongoose
 
 app.post('/add-todo', (req, res) => {
     const { data, time, todo, author } = req.body;
-    let userId = req.ip; 
+    let userId = req.ip;
 
     const post = new Todo({
         data,
@@ -47,11 +47,12 @@ app.post('/add-todo', (req, res) => {
 });
 
 app.get('/todos', (req, res) => {
-    const userId = req.ip; 
+    const userId = req.ip;
 
     Todo.find({ userId })
         .then((todos) => {
-            res.status(200).json(todos);
+            const userTodos = todos.filter(todo => todo.userId === userId);
+            res.status(200).json(userTodos);
         })
         .catch((error) => {
             console.log(error);
