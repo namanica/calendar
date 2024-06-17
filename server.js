@@ -2,60 +2,72 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const Todo = require('./models/todos');
+require('dotenv').config();
 
-const app = express();
-const PORT = 3000;
-const db = 'mongodb+srv://tymur_naboka:1ikuoFfdOrE0RdQe@calendar.9w5ltgm.mongodb.net/Calendar-todos?retryWrites=true&w=majority&appName=Calendar';
+const Server = async () => {
+  const chalk = await import('chalk');
+  const errorMessage = chalk.default.blue.bgRed.bold;
+  const successMessage = chalk.default.white.bgGreen.bold;
 
-app.use(express.static(path.join(__dirname)));
+  const app = express();
+  const PORT = process.env.PORT;
+  const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@calendar.9w5ltgm.mongodb.net/Calendar-todos?retryWrites=true&w=majority&appName=Calendar`;
 
-app.use(express.json());
+  app.use(express.static(path.join(__dirname)));
+  app.use(express.json());
 
-app.listen(PORT, (error) => {
-  error ? console.log(error) : console.log(`listening port ${PORT}`);
-});
-
-mongoose
-  .connect(db)
-  .then(() => {
-    console.log('connected to DB');
-  })
-  .catch((error) => {
-    console.log(error);
+  app.listen(PORT, (error) => {
+    if (error) {
+      console.log(errorMessage(error));
+    } else {
+      console.log(successMessage(`listening port ${PORT}`));
+    }
   });
 
-app.post('/add-todo', (req, res) => {
-  const { data, time, todo, author } = req.body;
-  const userId = req.ip;
+  mongoose
+    .connect(db)
+    .then(() => {
+      console.log(successMessage('connected to DB'));
+    })
+    .catch((error) => {
+      console.log(errorMessage(error));
+    });
 
-  const post = new Todo({
-    data,
-    time,
-    todo,
-    author,
-    userId,
+  app.post('/add-todo', (req, res) => {
+    const { data, time, todo, author } = req.body;
+    const userId = req.ip;
+
+    const post = new Todo({
+      data,
+      time,
+      todo,
+      author,
+      userId,
+    });
+
+    post.save()
+      .then((result) => {
+        res.status(201).json(result);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json({ error: 'Error In Post Request' });
+      });
   });
 
-  post.save()
-    .then((result) => {
-      res.status(201).json(result);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json({ error: 'Error In Post Request' });
-    });
-});
+  app.get('/todos', (req, res) => {
+    const userId = req.ip;
 
-app.get('/todos', (req, res) => {
-  const userId = req.ip;
+    Todo.find({ userId })
+      .then((todos) => {
+        const userTodos = todos.filter((todo) => todo.userId === userId);
+        res.status(200).json(userTodos);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json({ error: 'Error In Get Request' });
+      });
+  });
+};
 
-  Todo.find({ userId })
-    .then((todos) => {
-      const userTodos = todos.filter((todo) => todo.userId === userId);
-      res.status(200).json(userTodos);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json({ error: 'Error In Get Request' });
-    });
-});
+Server();

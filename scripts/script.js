@@ -104,20 +104,21 @@ rightArrow.addEventListener('click', () => {
 setPopUpOpen();
 
 dateInput.addEventListener('input', (event) => {
-  dateInput.value = dateInput.value.replace(/[^0-9/]/g, '');
+  const inputValue = dateInput.value;
+  inputValue = inputValue.replace(/[^0-9/]/g, '');
   const monthValueLength = 2;
 
-  if (dateInput.value.length === monthValueLength) {
-    dateInput.value += '/';
+  if (inputValue.length === monthValueLength) {
+    inputValue += '/';
   }
 
-  if (dateInput.value.length > weekDaysNumber) {
-    dateInput.value = dateInput.value.slice(0, weekDaysNumber);
+  if (inputValue.length > weekDaysNumber) {
+    inputValue = inputValue.slice(0, weekDaysNumber);
   }
 
   if (event.inputType === 'deleteContentBackward') {
-    if (dateInput.value.length === monthValueLength + 1) {
-      dateInput.value = dateInput.value.slice(0, 2);
+    if (inputValue.length === monthValueLength + 1) {
+      inputValue = inputValue.slice(0, 2);
     }
   }
 });
