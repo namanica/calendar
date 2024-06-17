@@ -10,8 +10,8 @@ const Server = async () => {
   const successMessage = chalk.default.white.bgGreen.bold;
 
   const app = express();
-  const PORT = process.env.PORT;
-  const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@calendar.9w5ltgm.mongodb.net/Calendar-todos?retryWrites=true&w=majority&appName=Calendar`;
+  const PORT = 3000;
+  const db = 'mongodb+srv://tymur_naboka:1ikuoFfdOrE0RdQe@calendar.9w5ltgm.mongodb.net/Calendar-todos?retryWrites=true&w=majority&appName=Calendar';
 
   app.use(express.static(path.join(__dirname)));
   app.use(express.json());
