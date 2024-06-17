@@ -12,50 +12,50 @@ app.use(express.static(path.join(__dirname)));
 app.use(express.json());
 
 app.listen(PORT, (error) => {
-    error ? console.log(error) : console.log(`listening port ${PORT}`);
+  error ? console.log(error) : console.log(`listening port ${PORT}`);
 });
 
 mongoose
-.connect(db)
-.then(() => {
+  .connect(db)
+  .then(() => {
     console.log('connected to DB');
-})
-.catch((error) => {
+  })
+  .catch((error) => {
     console.log(error);
-});
+  });
 
 app.post('/add-todo', (req, res) => {
-    const { data, time, todo, author } = req.body;
-    let userId = req.ip;
+  const { data, time, todo, author } = req.body;
+  const userId = req.ip;
 
-    const post = new Todo({
-        data,
-        time,
-        todo,
-        author,
-        userId,
+  const post = new Todo({
+    data,
+    time,
+    todo,
+    author,
+    userId,
+  });
+
+  post.save()
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: 'Error In Post Request' });
     });
-
-    post.save()
-        .then((result) => {
-            res.status(201).json(result);
-        })
-        .catch((error) => {
-            console.log(error);
-            res.status(500).json({ error: 'Error In Post Request' });
-        });
 });
 
 app.get('/todos', (req, res) => {
-    const userId = req.ip;
+  const userId = req.ip;
 
-    Todo.find({ userId })
-        .then((todos) => {
-            const userTodos = todos.filter(todo => todo.userId === userId);
-            res.status(200).json(userTodos);
-        })
-        .catch((error) => {
-            console.log(error);
-            res.status(500).json({ error: 'Error In Get Request' });
-        });
+  Todo.find({ userId })
+    .then((todos) => {
+      const userTodos = todos.filter((todo) => todo.userId === userId);
+      res.status(200).json(userTodos);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: 'Error In Get Request' });
+    });
 });

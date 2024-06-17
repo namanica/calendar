@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/namanica/calendar#readme",
   "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "eslint": "^9.5.0",
+    "eslint-config-rallycoding": "^3.2.0",
+    "globals": "^15.5.0",
     "nodemon": "^3.1.1"
   },
   "dependencies": {

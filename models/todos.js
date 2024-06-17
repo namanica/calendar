@@ -22,7 +22,7 @@ const todoSchema = new Schema({
     type: String,
     required: true,
   },
-}, {timestamps: true});
+}, { timestamps: true });
 
 const Todos = mongoose.model('Todo', todoSchema);
 module.exports = Todos;

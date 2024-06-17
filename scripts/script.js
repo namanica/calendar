@@ -1,16 +1,19 @@
+/* eslint-disable space-unary-ops */
+/* eslint-disable space-in-parens */
+/* eslint-disable max-len */
 import monthArr from './api.js';
-import { setPopUpOpen } from "./pop-up.js";
+import { setPopUpOpen } from './pop-up.js';
 
 // global variables
-const imageBlock = document.querySelector(".img");
-const body = document.querySelector("body");
-const monthName = document.querySelector(".monthName");
-const leftArrow = document.querySelector(".left-arrow");
-const rightArrow = document.querySelector(".right-arrow");
-const dayNumbers = document.querySelector(".dayNumbers");
-const dateInput = document.querySelector(".day-input");
-const dateInputButton = document.querySelector(".day-search-btn");
-const todaySearcherButton = document.querySelector(".today-searcher-btn");
+const imageBlock = document.querySelector('.img');
+const body = document.querySelector('body');
+const monthName = document.querySelector('.monthName');
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const dayNumbers = document.querySelector('.dayNumbers');
+const dateInput = document.querySelector('.day-input');
+const dateInputButton = document.querySelector('.day-search-btn');
+const todaySearcherButton = document.querySelector('.today-searcher-btn');
 const weekDaysNumber = 7;
 
 let today = new Date();
@@ -20,8 +23,8 @@ let year = today.getFullYear();
 //basic calendar initialisation
 const initCalendar = () => {
 
-  const firstDay = new Date(year,month,1);
-  const lastDay = new Date(year,month + 1,0);
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
   const lastDayDate = lastDay.getDate();
   const prevLastDay = new Date(year, month, 0);
   const prevDays = prevLastDay.getDate();
@@ -33,14 +36,14 @@ const initCalendar = () => {
   const yearExact = todayDay.getFullYear();
 
   //header with month and year
-  monthName.innerHTML = monthArr[month].name.toUpperCase() + " " + year;
+  monthName.innerHTML = monthArr[month].name.toUpperCase() + ' ' + year;
 
   //background images setting
   imageBlock.style.backgroundImage = `url(images/monthCats/${monthArr[month].image})`;
   body.style.backgroundImage = `url(images/backgrounds/${monthArr[month].background})`;
 
   //blocks with dates of previous month
-  let days = [];
+  const days = [];
   for (let x = day; x > 0; x--) {
     const dayNumberBlock = `<div class="block"><div class="dayNumber">${prevDays - x + 1}</div></div>`;
     days.push(dayNumberBlock);
@@ -65,21 +68,21 @@ const initCalendar = () => {
   dayNumbers.innerHTML = days.join('');
 
   //function for highlighting weekends
-  const dayNumbersArr = document.querySelectorAll(".dayNumber");
+  const dayNumbersArr = document.querySelectorAll('.dayNumber');
   const paintWeekends = () => {
     for (let i = 0; i < dayNumbersArr.length; i++) {
       if ((i + 1) % weekDaysNumber === 0 || (i + 1) % weekDaysNumber === 1) {
         dayNumbersArr[i].style.backgroundColor = monthArr[month].color;
       }
     }
-  }
+  };
   paintWeekends();
-}
+};
 
 initCalendar();
 
 const monthNumber = 11;
-leftArrow.addEventListener("click", () => {
+leftArrow.addEventListener('click', () => {
   month--;
   if (month < 0) {
     month = monthNumber;
@@ -88,7 +91,7 @@ leftArrow.addEventListener("click", () => {
   initCalendar();
   setPopUpOpen();
 });
-rightArrow.addEventListener("click", () => {
+rightArrow.addEventListener('click', () => {
   month++;
   if (month > monthNumber) {
     month = 0;
@@ -100,27 +103,27 @@ rightArrow.addEventListener("click", () => {
 
 setPopUpOpen();
 
-dateInput.addEventListener("input",(event) => {
-  dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
+dateInput.addEventListener('input', (event) => {
+  dateInput.value = dateInput.value.replace(/[^0-9/]/g, '');
   const monthValueLength = 2;
 
   if (dateInput.value.length === monthValueLength) {
-    dateInput.value += "/";
+    dateInput.value += '/';
   }
 
   if (dateInput.value.length > weekDaysNumber) {
     dateInput.value = dateInput.value.slice(0, weekDaysNumber);
   }
 
-  if (event.inputType === "deleteContentBackward") {
+  if (event.inputType === 'deleteContentBackward') {
     if (dateInput.value.length === monthValueLength + 1) {
-      dateInput.value = dateInput.value.slice(0,2);
+      dateInput.value = dateInput.value.slice(0, 2);
     }
   }
-})
+});
 
 const findDate = () => {
-  const dateArr = dateInput.value.split("/");
+  const dateArr = dateInput.value.split('/');
 
   if (dateArr.length === 2) {
     if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
@@ -130,23 +133,23 @@ const findDate = () => {
       setPopUpOpen();
     }
   }
-  const error = new Error("couldn`t find the entered date");
+  const error = new Error('couldn`t find the entered date');
   console.error(error);
-}
+};
 
-dateInputButton.addEventListener("click", findDate);
-dateInput.addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
+dateInputButton.addEventListener('click', findDate);
+dateInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
     findDate();
   }
 });
 
-todaySearcherButton.addEventListener("click", () => {
+todaySearcherButton.addEventListener('click', () => {
   today = new Date();
   month = today.getMonth();
   year = today.getFullYear();
 
   initCalendar();
   setPopUpOpen();
-})
+});
 
