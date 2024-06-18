@@ -104,16 +104,17 @@ rightArrow.addEventListener('click', () => {
 setPopUpOpen();
 
 dateInput.addEventListener('input', (event) => {
-  const inputValue = dateInput.value;
+  let inputValue = dateInput.value;
   inputValue = inputValue.replace(/[^0-9/]/g, '');
   const monthValueLength = 2;
+  const maxLength = 7;
 
   if (inputValue.length === monthValueLength) {
     inputValue += '/';
   }
 
-  if (inputValue.length > weekDaysNumber) {
-    inputValue = inputValue.slice(0, weekDaysNumber);
+  if (inputValue.length > maxLength) {
+    inputValue = inputValue.slice(0, maxLength);
   }
 
   if (event.inputType === 'deleteContentBackward') {
@@ -121,6 +122,8 @@ dateInput.addEventListener('input', (event) => {
       inputValue = inputValue.slice(0, 2);
     }
   }
+
+  dateInput.value = inputValue;
 });
 
 const findDate = () => {
